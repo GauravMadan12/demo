@@ -1,0 +1,31 @@
+<div style = "text-align:center"><h1><u>Games</u></h1></div> 
+
+ <div class = "row" style="background-color:red;text-align: center" *ngIf = "selectedGame == undefined;else elseBlock">
+     <div class = "col-md-4" style="border:2px solid black;color:white" *ngFor = "let ele of games">
+        <h3>{{ele.gameName}}</h3> 
+     <p><img [src] = "ele.imageUrl" style = " height:200px;width:200px;border:6px solid black" (click) = "selectedGame = ele"> </p>   
+        
+     </div>
+</div>
+
+<ng-template #elseBlock>
+        <div class ="col" style="background-color:cyan;padding :5px;border:5px solid blue">
+              <p style="text-align: center">
+                  <span><h3>{{selectedGame.gameName}}</h3></span><br> 
+                  <img [src] = "selectedGame.imageUrl" style = " height:200px;width:200px;border:6px solid black">  <br>
+                  <span *ngFor = "let i of selectedGame.players "><h5>{{i}}</h5></span><br>
+                  <button class="btn btn-danger" (click) = "selectedGame = undefined">Back</button>
+              </p>
+           </div>
+</ng-template>
+
+<!-- <div class = "row" style= "text-align:center;border:2px solid black;" *ngIf = "selectedGame == undefined ; else elseBlock">
+        <div class = "col-md-4" *ngFor = "let game of games" (click) = "selectedGame = game " style= "border:2px solid black">
+            <game-view [game] = "game"></game-view>
+        </div>
+    
+    </div>
+    
+    <ng-template #elseBlock>
+        <game-detail [beta] = "selectedGame" (out)= "selectedGame = undefined"></game-detail>
+    </ng-template> -->
